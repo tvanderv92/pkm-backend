@@ -1,0 +1,28 @@
+created: 20200131222405481
+modified: 20200131222437988
+tags: data-definitions
+title: Data Definitons
+type: text/vnd.tiddlywiki
+
+; Dirty Reads(DR)
+: One clients reads another clients writes before they have been "committed". The [[Read Committed(RC) Isolation level| Transaction Isolation Levels]] and stronger levels prevent dirty reads.
+; Diry Writes
+: One clients overwrites data that another clients has written but not yet "committed". The [[Read Committed(RC) Isolation level| Transaction Isolation Levels]] and stronger levels prevent dirty reads.
+; Read Skews(NRR)
+: A client sees different parts of the database at different poins in time. This issue is most commonly prevented with [[Snapshot(SI) Isolation level| Transaction Isolation Levels]] and is implemented with "Multi-version concurrency control(MVCC)"
+; Lost Updates (LU)
+: Two clients concurrenlty perform a read-modify-write cycle. One overwirtes the other's write without incorporating its changes, ergo data is lost. some implementation of snapshot isolation prevents this anomaly automatically, whilst others requires the usage of locks.
+; Write Skew (WS)
+A transaction reads something, makes a decision based on the value it saw, and wirtes the decision to the database. However by the time the write is made, the premise of the decision is no longer true. Only [[Serializable(SAI) Isolation level| Transaction Isolation Levels]] prevents this anomaly.
+; Phantom Reads (PH)
+: A transaction reads objects that match some search condition. another clients make a write that affects the result of that search. [[Snapshot(SI) Isolation level| Transaction Isolation Levels]] prevents straightforward phantom reads, but phantom reads in the context of write skew require special treatment, such as "index-range" locks.
+
+; Serial Order Execution (SOE)
+: very fast and simple serial execution of transactions on a single CPU core.
+
+; Two Phase Locking (2PL)
+: a concurrency control mechanism that guarantees "serializability". locks are applied and removed in two phases
+	*expanding phase* locks are acquired and not released
+    *shrinking phase* locks are released and no locks are acquired
+; Serializable snapshot isolation (SSI)
+: new algorithm that uses an optimistic approch allowing transactions to proceeed without blocking. when a transaction wans to commit, it is checked, and it is aborted if the execution was not serializable.
