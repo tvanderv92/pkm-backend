@@ -1,7 +1,15 @@
-$:/tags/SideBar
+
+created: 20200131222405481
+modified: 20200131222437988
+tags: $:/tags/SideBar
+title: Contents
+type: text/vnd.tiddlywiki
 
 <div class="tc-table-of-contents">
 
 <<toc-selective-expandable 'TableOfContents'>>
 
 </div>
+
+caption: Contents
+list-after: $:/core/ui/SideBar/Open
