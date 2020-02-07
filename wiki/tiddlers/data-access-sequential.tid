@@ -1,0 +1,30 @@
+created: 20200131222405481
+modified: 20200131222437988
+tags: data-access, SQL
+title: Sequential Access
+type: text/vnd.tiddlywiki
+
+!Sequential Access
+
+!!Indexes
+
+"Single Table"
+index file - tree structure - physical sort order
+* finding extrema in data is straightforward
+* redundant data to be found in indexes and as data grows -> depth of tree increases which requires more probes to work
+
+"Multiple Table"
+indexes - 'prejoins' tables in same schema - 
+pk in base table that is referenced uses a //pointer//
+
+
+!!!Index Types
+
+"Primary Indexes"
+- ensures uniqueness and is required for a schema to have data integrity
+
+"Secondary index"
+- improves performance
+
+!!!!Hashing
+hashing function returns physical storage address based on given input values.
